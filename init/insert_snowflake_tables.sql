@@ -127,10 +127,10 @@ INSERT INTO dim_product (
 SELECT DISTINCT ON (sale_product_id)
     md.sale_product_id,
     md.product_name,
-    md.pet_category,
+    md.pet_category,св
     md.product_category,
-    md.product_price,
     md.product_quantity,
+    md.product_price,
     md.product_weight,
     md.product_color,
     md.product_size,

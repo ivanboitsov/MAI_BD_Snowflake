@@ -22,7 +22,7 @@ done
 echo "Initialization complete!"
 
 # Check logs for erors
-docker lgogs petshop_snowflake 2>&1 | grep -i "error" || echo "No errors found in logs."
+docker logs petshop_snowflake 2>&1 | grep -i "error" || echo "No errors found in logs."
 
 # Check tables and data
 docker exec -it petshop_snowflake psql -U postgres -d petshop_db -c "\dt"

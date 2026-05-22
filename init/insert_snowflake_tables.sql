@@ -14,7 +14,7 @@ FROM (
     UNION
 
     -- supplier location
-    SELECT supplier_country AS country, NULL AS state, NULL AS city, NULL AS postal_code, NULL AS location FROM mock_data
+    SELECT supplier_country AS country, NULL AS state, supplier_city AS city, NULL AS postal_code, NULL AS location FROM mock_data
 ) locations
 WHERE country IS NOT NULL OR city IS NOT NULL OR state IS NOT NULL OR postal_code IS NOT NULL OR location IS NOT NULL
 ON CONFLICT (country, city, state, postal_code, location) DO NOTHING;

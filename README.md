@@ -58,16 +58,15 @@
 Для ручного запуска пропишите команды:
 ```bash
 docker compose build -t
-
 docker compose up -d
 ```
 
 Для проверки результатов:
 ```bash
-# Наличие таблиц в БД petshop_db
+# Наличие таблиц
 docker exec -it petshop_snowflake psql -U postgres -d petshop_db -c "\dt"
 
-# Количество строк строк данных в каждой таблицы
+# Количество строк в каждой таблице
 docker exec petshop_snowflake psql -U postgres -d petshop_db -c "
 SELECT 'mock_data' AS tbl, COUNT(*) FROM mock_data
 UNION ALL SELECT 'dim_location', COUNT(*) FROM dim_location
@@ -87,6 +86,11 @@ docker exec -it petshop_snowflake psql -U postgres -d petshop_db -c "SELECT * FR
 ### Автоматическйи запуск и проверка
 В решении также предусмотрен [скрипт автоматизации](/run_solution.sh).
 
+```bash
+chmod +x run_solution.sh
+./run_solution.sh
+```
+
 Скрипт автоматически:
 - поднимает PostgreSQL;
 - ждёт готовности сервиса;
@@ -95,7 +99,7 @@ docker exec -it petshop_snowflake psql -U postgres -d petshop_db -c "SELECT * FR
 
 
 ## Результаты
-> Таблицы в сформированной бд:
+> Таблицы схемы снежинка в PostgreSQL:
 
 Schema |     Name     | Type  |  Owner   
 -------|--------------|-------|----------
